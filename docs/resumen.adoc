@@ -20,5 +20,14 @@ Controlador de archivos que recibe por parámetro el nombre del archivo o una ru
 
 [source, Javascript]
 ----
-include::../watcher.js[]
+include::../watcher-argv.js[]
+----
+
+=== Tercer Ejercicio
+
+Controlador de archivos que recibe por parámetro el nombre del archivo o una ruta a un directorio y muestra un ls a partir de un subproceso
+
+[source, Javascript]
+----
+include::../watcher-spawn.js[]
 ----
