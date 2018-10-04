@@ -6,6 +6,17 @@
 == Debatiendo el Sistema de Ficheros
 
 === Primer Ejercicio
+
+Controlador de cambios dentro del directorio data.
+
+[source, Javascript]
+----
+include::../watcher.js[]
+----
+
+=== Segundo Ejercicio
+
+Controlador de archivos que recibe por parámetro el nombre del archivo o una ruta a un directorio.
 [source, Javascript]
 ----
 include::../watcher.js[]
