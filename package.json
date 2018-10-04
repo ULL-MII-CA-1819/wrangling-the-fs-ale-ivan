@@ -1,0 +1,26 @@
+{
+  "name": "wrangling-the-fs-ale-ivan",
+  "version": "1.0.0",
+  "description": "Practica 2 de Computacion Avanzada",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ULL-MII-CA-1819/wrangling-the-fs-ale-ivan.git"
+  },
+  "keywords": [
+    "node",
+    "mocha",
+    "chai",
+    "functional",
+    "programming"
+  ],
+  "author": "Ivan Garcia, Alejandro Marrero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ULL-MII-CA-1819/wrangling-the-fs-ale-ivan/issues"
+  },
+  "homepage": "https://github.com/ULL-MII-CA-1819/wrangling-the-fs-ale-ivan#readme"
+}
