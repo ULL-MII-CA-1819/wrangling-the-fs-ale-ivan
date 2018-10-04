@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/ULL-MII-CA-1819/wrangling-the-fs-ale-ivan/issues"
   },
-  "homepage": "https://github.com/ULL-MII-CA-1819/wrangling-the-fs-ale-ivan#readme"
+  "homepage": "https://github.com/ULL-MII-CA-1819/wrangling-the-fs-ale-ivan#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^6.0.0",
+    "gulp-shell": "^0.6.5"
+  }
 }

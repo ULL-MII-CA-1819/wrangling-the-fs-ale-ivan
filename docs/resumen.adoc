@@ -1,0 +1,11 @@
+
+= Práctica 2 - Computación Avanzada
+== Máster en Ingeniería Informática @ Universidad de La Laguna
+
+== Debatiendo el Sistema de Ficheros
+
+=== Primer Ejercicio
+[source, Javascript]
+----
+include::../watcher.js[]
+----
