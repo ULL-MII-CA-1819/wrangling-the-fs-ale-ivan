@@ -485,7 +485,7 @@ fs.watch(filename, (event, filename) =&gt; {
 <div class="sect2">
 <h3 id="_tercer_ejercicio">Tercer Ejercicio</h3>
 <div class="paragraph">
-<p>Controlador de archivos que recibe por parámetro el nombre del archivo o una ruta a un directorio y muestra un ls a partir de un subproceso</p>
+<p>Controlador de archivos que recibe por parámetro el nombre del archivo o una ruta a un directorio y muestra un ls a partir de un subproceso.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -504,12 +504,41 @@ fs.watch(filename, () =&gt; {
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_cuarto_ejercicio">Cuarto Ejercicio</h3>
+<div class="paragraph">
+<p>Controlador de archivos que recibe por parámetro el nombre del archivo o una ruta a un directorio y muestra cierta información del archivo tras los cambios.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">const
+    fs = require('fs'),
+    spawn = require('child_process').spawn,
+    filename = process.argv[2];
+
+if(!filename)
+    throw Error("A file or either a directory must be specified!");
+console.log(`Now watching @ ${filename} for changes`);
+fs.watch(filename, () =&gt; {
+    let ls = spawn('ls', ['-lh', filename]);
+    let output = '';
+    ls.stdout.on('data', (chunk) =&gt; {
+        output += chunk.toString();
+    });
+    ls.on('close', () =&gt; {
+        let parts = output.split(/\s+/);
+        console.log(parts[0], parts[4], parts[8]);
+    });
+});</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-04 19:12:25 Hora estßndar romance
+Last updated 2018-10-04 19:21:50 Hora estßndar romance
 </div>
 </div>
 </body>
