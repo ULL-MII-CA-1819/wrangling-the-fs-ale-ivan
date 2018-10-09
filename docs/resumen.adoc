@@ -67,3 +67,21 @@ Lector Stream, simulador de cat
 ----
 include::../cat.js[]
 ----
+
+=== Octavo Ejercicio
+
+Lector Stream, simulador de cat
+
+[source, Javascript]
+----
+include::../read-stream.js[]
+----
+
+=== Noveno Ejercicio
+
+Lector Stream, simulador de cat
+
+[source, Javascript]
+----
+include::../readFileSync.js[]
+----
