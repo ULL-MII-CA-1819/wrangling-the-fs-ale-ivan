@@ -52,9 +52,9 @@ include::../read-simple.js[]
 
 === Sexto Ejercicio
 
-Controlador de archivos que recibe por parámetro el nombre del archivo o una ruta a un directorio y muestra cierta información del archivo tras los cambios.
+Escribe en un fichero de forma asincrona.
 
 [source, Javascript]
 ----
-include::../watcher-spawn-parse.js[]
+include::../write-simple.js[]
 ----
