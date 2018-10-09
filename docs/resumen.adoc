@@ -58,3 +58,12 @@ Escribe en un fichero de forma asincrona.
 ----
 include::../write-simple.js[]
 ----
+
+=== Septimo Ejercicio
+
+Lector Stream, simulador de cat
+
+[source, Javascript]
+----
+include::../cat.js[]
+----
