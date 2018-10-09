@@ -4,7 +4,7 @@ let shell = require('gulp-shell');
 const mocha = require('gulp-mocha');
 
 
-gulp.task("default", gulp.series("pre-install", "docs")); 
+gulp.task("default", ["travis"]);
 gulp.task("test", () =>
         gulp.src('./test/test.js', {read: false})
         .pipe(mocha({reporter: 'nyan'}))
@@ -17,4 +17,7 @@ gulp.task("pre-install", shell.task([
     "sudo gem install asciidoctor"
     ]));
 
-gulp.task("travis", )
+gulp.task("travis", () => {
+  shell.task("sudo gem install asciidoctor");
+  shell.task("asciidoctor docs/resumen.adoc -o docs/index.html");
+});
