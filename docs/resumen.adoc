@@ -40,3 +40,21 @@ Controlador de archivos que recibe por parámetro el nombre del archivo o una ru
 ----
 include::../watcher-spawn-parse.js[]
 ----
+
+=== Quinto Ejercicio
+
+Lector de archivos de forma asincrona.
+
+[source, Javascript]
+----
+include::../read-simple.js[]
+----
+
+=== Sexto Ejercicio
+
+Controlador de archivos que recibe por parámetro el nombre del archivo o una ruta a un directorio y muestra cierta información del archivo tras los cambios.
+
+[source, Javascript]
+----
+include::../watcher-spawn-parse.js[]
+----
