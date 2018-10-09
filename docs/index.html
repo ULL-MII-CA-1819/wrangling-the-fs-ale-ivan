@@ -468,17 +468,20 @@ fs.watch('./data/', (event, filename) =&gt; {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">const
-    fs = require('fs'),
-    filename = process.argv[2];
-
-if(!filename)
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">let index = 2; //Eliminamos node y el nombre del .js
+if(index == process.argv.length)
     throw Error("A file or either a directory must be specified!");
-console.log(`Now watching @ ${filename} for changes`);
-fs.watch(filename, (event, filename) =&gt; {
-    console.log(`File ${filename} just changed with this event: ${event}`);
-    console.log(`Still watching @ ${filename}`)
-});</code></pre>
+while(index &lt; process.argv.length) {
+  const
+      fs = require('fs'),
+      filename = process.argv[index];
+  console.log(`Now watching @ ${filename} for changes`);
+  fs.watch(filename, (event, filename) =&gt; {
+      console.log(`File ${filename} just changed with this event: ${event}`);
+      console.log(`Still watching @ ${filename}`)
+  });
+  index++;
+}</code></pre>
 </div>
 </div>
 </div>
@@ -489,18 +492,29 @@ fs.watch(filename, (event, filename) =&gt; {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">const
-    fs = require('fs'),
-    spawn = require('child_process').spawn,
-    filename = process.argv[2];
-
-if(!filename)
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">let index = 2; //Eliminamos node y el nombre del .js
+var log = console.log.bind(console);
+if(index == process.argv.length)
     throw Error("A file or either a directory must be specified!");
-console.log(`Now watching @ ${filename} for changes`);
-fs.watch(filename, () =&gt; {
-    let ls = spawn('ls', ['-lh', filename]);
-    ls.stdout.pipe(process.stdout);
-});</code></pre>
+while(index &lt; process.argv.length) {
+  const
+      fs = require('fs'),
+      spawn = require('child_process').spawn,
+      filename = process.argv[index];
+
+  console.log(`Now watching @ ${filename} for changes`);
+  let watcher = fs.watch(filename, () =&gt; {
+      let ls = spawn('ls', ['-lh', filename]);
+      //Controlando el delete file, fortifying code
+      ls.on('error', function(err) {
+      	process.stderr.write("Ha habido un ERROR: " + err.message + "\n");
+        watcher.close();
+      });
+      ls.stdout.pipe(process.stdout);
+  });
+
+  index++;
+}</code></pre>
 </div>
 </div>
 </div>
@@ -511,25 +525,115 @@ fs.watch(filename, () =&gt; {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">const
-    fs = require('fs'),
-    spawn = require('child_process').spawn,
-    filename = process.argv[2];
-
-if(!filename)
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">let index = 2; //Eliminamos node y el nombre del .js
+if(index == process.argv.length)
     throw Error("A file or either a directory must be specified!");
-console.log(`Now watching @ ${filename} for changes`);
-fs.watch(filename, () =&gt; {
-    let ls = spawn('ls', ['-lh', filename]);
-    let output = '';
-    ls.stdout.on('data', (chunk) =&gt; {
-        output += chunk.toString();
-    });
-    ls.on('close', () =&gt; {
-        let parts = output.split(/\s+/);
-        console.log(parts[0], parts[4], parts[8]);
-    });
+while(index &lt; process.argv.length) {
+  const
+      fs = require('fs'),
+      spawn = require('child_process').spawn,
+      filename = process.argv[index];
+  console.log(`Now watching @ ${filename} for changes`);
+  fs.watch(filename, () =&gt; {
+      let ls = spawn('ls', ['-lh', filename]);
+      let output = '';
+      ls.stdout.on('data', (chunk) =&gt; {
+          output += chunk.toString();
+      });
+      ls.on('close', () =&gt; {
+          let parts = output.split(/\s+/);
+          console.log(parts[0], parts[4], parts[8]);
+      });
+  });
+  index++;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quinto_ejercicio">Quinto Ejercicio</h3>
+<div class="paragraph">
+<p>Lector de archivos de forma asincrona.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">//Lector asincrono de Ficheros
+const fs = require('fs');
+fs.readFile('target.txt', function(err, data) {
+  if(err) {
+    throw err;
+  }
+  console.log(data.toString());
 });</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sexto_ejercicio">Sexto Ejercicio</h3>
+<div class="paragraph">
+<p>Escribe en un fichero de forma asincrona.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">//Escribe en un fichero de forma asincrona
+
+const fs = require('fs');
+fs.writeFile('targetWrite.txt', 'witty message', function(err){
+  if(err) {
+    throw err;
+  }
+  console.log("File saved!");
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_septimo_ejercicio">Septimo Ejercicio</h3>
+<div class="paragraph">
+<p>Lector Stream, simulador de cat</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">//Lector de Streams
+
+require('fs').createReadStream(process.argv[2]).pipe(process.stdout);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_octavo_ejercicio">Octavo Ejercicio</h3>
+<div class="paragraph">
+<p>Lector Stream</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">//Lector Stream
+
+const
+	fs = require('fs'),
+	stream = fs.createReadStream(process.argv[2]);
+stream.on('data', function(chunk) {
+	process.stdout.write(chunk);
+});
+stream.on('error', function(err) {
+	process.stderr.write("ERROR: " + err.message + "\n");
+});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_noveno_ejercicio">Noveno Ejercicio</h3>
+<div class="paragraph">
+<p>Lector de fichero sincrono</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-Javascript" data-lang="Javascript">//Lector de ficheros de forma sincrona
+
+const
+  fs = require('fs'),
+  data = fs.readFileSync('target.txt');
+  process.stdout.write(data.toString());</code></pre>
 </div>
 </div>
 </div>
@@ -538,7 +642,7 @@ fs.watch(filename, () =&gt; {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-04 19:21:50 Hora estßndar romance
+Last updated 2018-10-09 21:43:48 UTC
 </div>
 </div>
 </body>

@@ -4,8 +4,8 @@ let shell = require('gulp-shell');
 const mocha = require('gulp-mocha');
 
 
-gulp.task("default", ["test"]); 
-gulp.task("test", () => 
+gulp.task("default", ["docs"]); 
+gulp.task("test", () =>
         gulp.src('./test/test.js', {read: false})
         .pipe(mocha({reporter: 'nyan'}))
 );

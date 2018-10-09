@@ -70,7 +70,7 @@ include::../cat.js[]
 
 === Octavo Ejercicio
 
-Lector Stream, simulador de cat
+Lector Stream
 
 [source, Javascript]
 ----
@@ -79,7 +79,7 @@ include::../read-stream.js[]
 
 === Noveno Ejercicio
 
-Lector Stream, simulador de cat
+Lector de fichero sincrono
 
 [source, Javascript]
 ----
